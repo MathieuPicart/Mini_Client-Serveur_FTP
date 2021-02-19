@@ -1,2 +1,2 @@
-# Mini_Client-Serveur_FTP
+# Mini Client-Serveur FTP
 Mini projet reseau en java avec l'ubo :)))
