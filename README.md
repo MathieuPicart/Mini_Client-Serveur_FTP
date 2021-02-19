@@ -33,13 +33,44 @@ personne et mot de passe : abcd.
 
 
 ## Table of contents
-* [General info](#general-info)
+* [Information General](#information-general)
 * [Technologies](#technologies)
 * [Mockup](#mockup)
 * [Demo](#demo)
 * [Contact](#contact)
 
-## General info
+## Information General
+
+### Etape 1 : Application de base
+1. Utilisez Eclypse et créer un nouveau projet Java
+2. Téléchargez les sources Java du serveur FTP via l'url suivante :
+http://labstice univ-brest.fr/~bounceur/cours/java_reseau/tps/serveur_ftp.zip 
+3. Lisez-le et analysez-le. Quelles sont les commandes ftp implémentées ?
+4. Créer un client Java permettant de se connecter à ce serveur et de lui envoyer des commandes ftp (a ce stade on peut utiliser les commandes user, pass et pwd
+5. Complétez toutes les commandes non implémentées du serveur 6. Compléter le client pour pouvoir envoyer toutes les commandes implémentées
+
+### Étape 2: Amélioration
+
+On suppose qu'un seul client à la fois peut se connecter sur le serveur. Dans cette étape, on envisage gérer les erreurs liées au départ du client et du serveur. Il faut ajouter la possibilité que le client se déconnecte proprement lorsque le serveur s'arrête subitement. Il doit afficher un message comme quelle serveur est déconnecté. Et de même pour le serveur, il faut qu'il puisse continuer à attendre d'autres clients lorsqu'un client part.
+
+### Etape 3 : Perfection
+
+Dans cette étape, le serveur doit pouvoir recevoir plusieurs clients. Il faut ajouter la possibilité de connexion de plusieurs clients à la fois. Pour ce faire, il faut suivre la démarche suivante:
+
+1. Derrière chaque client se cache un dossier au niveau du serveur portant le nom de son user. A l'intérieur de ce dossier on met un fichier pw.txt contenant le mot de passe La connexion d'un client passe par la commande user nom user qui permet au serveur de vérifier l'existence d'un dossier au nom de nom user et la commande passe xyz qui permet au serveur de vérifier que le texte du fichier pw.txt est le même que xyz. A noter que chaque commande envoyée par le client au serveur engendre une action au niveau du serveur et une réponse au client.
+2. Il faut commencer par une version gérant un seul client à la fois 
+3. Ensuite par une version qui gère plusieurs clients à la fois.
+
+Cas des commandes STOR et GET:
+Pour programmer ces deux commandes, il faut s'inspirer du protocole FTP réel. C'est-à-dire, Il faut prévoir l'utilisation de deux canaux comme suit :
+1. STOR nom fichier
+La commande STOR permet au serveur de créer un fichier vide au niveau du working directory (dossier courant) au nom de nom_fichier donné en argument. Ensuite, il faut ouvrir un deuxième canal (Socket) sur un autre port (ex. 4000). A partir de ce deuxième canal il faut créer un flux en écriture. C'est ce dernier qui sera utilisé pour envoyer les données du fichier. Une fois le fichier créé, fermer le flux ainsi que le canal correspondant La communication continue toujours sur le premier canal.
+
+2 GET nom fichier
+La commande GET permet au client de créer un fichier vide au niveau local au nom de nom_fichier donné en argument. Ensuite, il faut ouvrir un deuxieme canal (Socket) sur un autre port (ex. 5000). A partir de ce deuxième canal il faut créer un flux en lecture. C'est ce dernier qui sera utilisé pour récupérer les données du fichier. Une fois le fichier créé, fermer le flux ainsi que le canal correspondant. La communication continue toujours sur le premier canal
+
+### Etape 4 : L'IHM
+Ajouter une interface graphique. Utilisez JavaFX ou Swing selon votre préférence.
 
 ## Technologies
 * Java
