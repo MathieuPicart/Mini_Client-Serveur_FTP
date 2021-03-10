@@ -13,7 +13,7 @@ O Authentification :
 Le serveur envoie des réponses sous la forme : x texte
 Le x désigne l'état de la réponse. Il peut avoir 3 valeurs possibles : 
 * 0 → Signifie que la réponse est positive et finie, il n'y a rien à lire après
-* 1 Signifie que la réponse est intermédiaire et pas finie. Il faut continuer à lire car il reste encore des lignes à lire. 
+* 1 → Signifie que la réponse est intermédiaire et pas finie. Il faut continuer à lire car il reste encore des lignes à lire. 
 * 2 → Signifie que la réponse est négative et finie, il n'y a rien à lire après
 
 Une fois connecté au serveur, le client doit envoyer les deux commandes suivantes pour se connecter sur son compte. Aucune commande ne doit être acceptée si l'utilisateur n'est pas connecté. A cette étape, il n'existe aucun compte physique réel. 
