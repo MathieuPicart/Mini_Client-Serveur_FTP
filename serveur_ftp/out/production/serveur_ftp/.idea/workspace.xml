@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandeLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeLS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandePASS.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandePASS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommandeUSER.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeUSER.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +27,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -55,7 +63,7 @@
       <workItem from="1613721685281" duration="1811000" />
       <workItem from="1614334740180" duration="2156000" />
       <workItem from="1615379619982" duration="3489000" />
-      <workItem from="1615383673867" duration="221000" />
+      <workItem from="1615383673867" duration="3228000" />
     </task>
     <servers />
   </component>
