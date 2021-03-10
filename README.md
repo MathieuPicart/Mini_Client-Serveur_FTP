@@ -25,7 +25,8 @@ Les commandes à implémenter sont :
 - CD : pour changer de répertoire courant du côté du serveur 
 - GET: pour télécharger un fichier du serveur vers le client
 - LS : afficher la liste des dossiers et des fichiers du répertoire courant du serveur
-- PASS : pour envoyer le mot de passe PWD: pour afficher le chemin absolu du dossier courant
+- PASS : pour envoyer le mot de passe 
+- PWD: pour afficher le chemin absolu du dossier courant
 - STOR : pour envoyer un fichier vers le dossier courant serveur
 - USER : pour envoyer le nom du login
 
