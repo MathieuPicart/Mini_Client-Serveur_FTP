@@ -29,9 +29,14 @@ public class CommandExecutor {
 			}
 
 		} else {
+
 			switch (commande.split(" ")[0]) {
 				case "pass":
-					(new CommandePASS(ps, commande)).execute();
+					if(userOk) {
+						(new CommandePASS(ps, commande)).execute();
+					} else {
+						ps.println("2 Login n'a pas été saisie");
+					}
 					break;
 				case "user":
 					(new CommandeUSER(ps, commande)).execute();
