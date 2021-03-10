@@ -22,11 +22,11 @@ pass abcd
 
 Pour quitter le serveur, il faut lancer la commande bye.
 Les commandes à implémenter sont :
-- 1\. CD: pour changer de répertoire courant du côté du serveur GET: pour télécharger un fichier du serveur vers le client
-- LS: afficher la liste des dossiers et des fichiers du répertoire courant du serveur
+- CD : pour changer de répertoire courant du côté du serveur GET: pour télécharger un fichier du serveur vers le client
+- LS : afficher la liste des dossiers et des fichiers du répertoire courant du serveur
 - PASS : pour envoyer le mot de passe PWD: pour afficher le chemin absolu du dossier courant
 - STOR : pour envoyer un fichier vers le dossier courant serveur
-- USER: pour envoyer le nom du login
+- USER : pour envoyer le nom du login
 
 Le code donné contient une première version du serveur et du client. La commande PWD lémentée. Uniquement un seul client est accepté à la fois, et c'est le client a
 personne et mot de passe : abcd.
