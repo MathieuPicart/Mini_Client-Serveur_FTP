@@ -7,6 +7,7 @@ public class CommandExecutor {
 	
 	public static void executeCommande(PrintStream ps, String commande) {
 		if(userOk && pwOk) {
+
 			// Changer de repertoire. Un (..) permet de revenir au repertoire superieur
 			if(commande.split(" ")[0].equals("cd")) (new CommandeCD(ps, commande)).execute();
 	
@@ -21,6 +22,8 @@ public class CommandExecutor {
 			
 			// Envoyer (uploader) un fichier
 			if(commande.split(" ")[0].equals("stor")) (new CommandeSTOR(ps, commande)).execute();
+
+			ps.println("2 La commande n'existe pas");
 							}
 		else {
 			if(commande.split(" ")[0].equals("pass") || commande.split(" ")[0].equals("user")) {

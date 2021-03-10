@@ -7,8 +7,10 @@ public class CommandePASS extends Commande {
 	}
 
 	public void execute() {
-		// Le mot de passe est : abcd
-		if(commandeArgs[0].toLowerCase().equals("abcd")) {
+		if(!CommandExecutor.userOk){
+			ps.println("2 User non saisie");
+		}
+		else if(commandeArgs[0].toLowerCase().equals("abcd")) {
 			CommandExecutor.pwOk = true;
 			ps.println("1 Commande pass OK");
 			ps.println("0 Vous êtes bien connecté sur notre serveur");
