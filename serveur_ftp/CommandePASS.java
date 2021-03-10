@@ -10,7 +10,7 @@ public class CommandePASS extends Commande {
 
 	public void execute() {
 		try {
-			BufferedReader file = new BufferedReader(new FileReader(CommandExecutor.userPath+"/pssd.txt"));
+			BufferedReader file = new BufferedReader(new FileReader("users/"+CommandExecutor.user+"/pssd.txt"));
 			String pssd = file.readLine();
 			if(commandeArgs[0].toLowerCase().equals(pssd)) {
 				CommandExecutor.pwOk = true;
