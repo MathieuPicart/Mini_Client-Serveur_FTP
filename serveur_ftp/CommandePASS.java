@@ -1,4 +1,6 @@
-import java.io.PrintStream;
+import java.io.*;
+;import java.io.FileReader;
+import java.nio.Buffer;
 
 public class CommandePASS extends Commande {
 	
@@ -7,19 +9,23 @@ public class CommandePASS extends Commande {
 	}
 
 	public void execute() {
-		if(!CommandExecutor.userOk){
-			ps.println("2 User non saisie");
-		}
-		else if(commandeArgs[0].toLowerCase().equals("abcd")) {
-			CommandExecutor.pwOk = true;
-			ps.println("1 Commande pass OK");
-			ps.println("0 Vous êtes bien connecté sur notre serveur");
+		try {
+			BufferedReader file = new BufferedReader(new FileReader("users/"+CommandExecutor.user+"/pssd.txt"));
+			String pssd = file.readLine();
+			if(commandeArgs[0].toLowerCase().equals(pssd)) {
+				CommandExecutor.pwOk = true;
+				ps.println("1 Commande pass OK");
+				ps.println("0 Vous êtes bien connecté sur notre serveur");
 
+			}
+			else {
+				ps.println("2 Le mode de passe est faux");
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		else {
-			ps.println("2 Le mode de passe est faux");
-		}
-		
 	}
 
 }

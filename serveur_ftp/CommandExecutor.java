@@ -3,6 +3,7 @@ import java.io.PrintStream;
 public class CommandExecutor {
 	
 	public static boolean userOk = false ;
+	public static String user = null;
 	public static boolean pwOk = false ;
 	
 	public static void executeCommande(PrintStream ps, String commande) {
