@@ -44,7 +44,6 @@ personne et mot de passe : abcd.
 ### Etape 1 : Application de base
 1. Utilisez Eclypse et créer un nouveau projet Java
 2. Téléchargez les sources Java du serveur FTP via l'url suivante :
-http://labsticc.univ-brest.fr/~bounceur/cours/java_reseau/tps/serveur_ftp.zip 
 3. Lisez-le et analysez-le. Quelles sont les commandes ftp implémentées ?
 4. Créer un client Java permettant de se connecter à ce serveur et de lui envoyer des commandes ftp (a ce stade on peut utiliser les commandes user, pass et pwd
 5. Complétez toutes les commandes non implémentées du serveur 6. Compléter le client pour pouvoir envoyer toutes les commandes implémentées
@@ -76,7 +75,7 @@ Ajouter une interface graphique. Utilisez JavaFX ou Swing selon votre préféren
 * Java
 
 ## Mockup
-Maquette : [click here to see the mockup](https://www.figma.com/file/udO2sqspUWIROMsAbJb3yN/Projet-Ebooks?node-id=0%3A1 "Figma Mockup")
+Maquette : [click here to see the mockup](https://owenlebec.fr/)
 
 ---
 
