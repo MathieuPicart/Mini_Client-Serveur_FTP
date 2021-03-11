@@ -1,4 +1,5 @@
 import java.io.PrintStream;
+import java.io.File;
 
 public class CommandeLS extends Commande {
 	
@@ -7,7 +8,16 @@ public class CommandeLS extends Commande {
 	}
 
 	public void execute() {
-		ps.println("La commande ls n'est pas encoré implémentée");
+		/*File repertoire = new File(CommandExecutor.currentPath);
+		String liste[] = repertoire.list();
+
+		if (liste != null) {
+			for (int i = 0; i < liste.length; i++) {
+				System.out.println(liste[i]);
+			}
+		} else {
+			System.err.println("Nom de repertoire invalide");
+		}*/
 	}
 
 }
