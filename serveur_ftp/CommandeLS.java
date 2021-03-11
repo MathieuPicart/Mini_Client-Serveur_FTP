@@ -8,16 +8,19 @@ public class CommandeLS extends Commande {
 	}
 
 	public void execute() {
-		/*File repertoire = new File(CommandExecutor.currentPath);
+		File repertoire = new File(CommandExecutor.currentPath);
 		String liste[] = repertoire.list();
+		String res = "";
 
 		if (liste != null) {
 			for (int i = 0; i < liste.length; i++) {
 				System.out.println(liste[i]);
+				res += liste[i] + " \t";
 			}
+			ps.println("0 " + res);
 		} else {
-			System.err.println("Nom de repertoire invalide");
-		}*/
+			ps.println("2 Nom de repertoire invalide");
+		}
 	}
 
 }
