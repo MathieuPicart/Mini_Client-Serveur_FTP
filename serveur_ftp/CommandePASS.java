@@ -15,7 +15,7 @@ public class CommandePASS extends Commande {
 			if(commandeArgs[0].toLowerCase().equals(pssd)) {
 				CommandExecutor.pwOk = true;
 				CommandExecutor.currentPath = "";
-				CommandExecutor.racinePath = "users/"+CommandExecutor.user+"/racine/";
+				CommandExecutor.racinePath = "users/"+CommandExecutor.user+"/racine";
 				ps.println("1 Commande pass OK");
 				ps.println("0 Vous êtes bien connecté sur notre serveur");
 			}

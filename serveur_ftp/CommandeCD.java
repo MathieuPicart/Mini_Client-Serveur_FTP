@@ -7,7 +7,7 @@ public class CommandeCD extends Commande {
 	}
 
 	public void execute() {
-		File dossier = new File(CommandExecutor.racinePath + commandeArgs[0]);
+		File dossier = new File(CommandExecutor.racinePath + CommandExecutor.currentPath + "/" + commandeArgs[0]);
 		if (dossier.exists() && dossier.isDirectory()) {
 			if (dossier.toPath().normalize().toString().replace("\\", "/").contains(CommandExecutor.racinePath)) {
 				CommandExecutor.currentPath = dossier.toPath().normalize().toString().replace("\\", "/").replace(CommandExecutor.racinePath,"");
