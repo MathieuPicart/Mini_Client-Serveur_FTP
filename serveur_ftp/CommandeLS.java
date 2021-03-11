@@ -8,7 +8,7 @@ public class CommandeLS extends Commande {
 	}
 
 	public void execute() {
-		File repertoire = new File("users/");
+		File repertoire = new File(CommandExecutor.currentPath);
 		String liste[] = repertoire.list();
 		String res = "";
 
