@@ -7,11 +7,11 @@ public class CommandeCD extends Commande {
 	}
 
 	public void execute() {
-		File dossier = new File("users/"+commandeArgs[0].toLowerCase());
+		File dossier = new File(CommandExecutor.racinePath + commandeArgs);
 		if (dossier.exists() && dossier.isDirectory()){
-			ps.println("0 Commande user OK");
+			ps.println("0 Commande cd OK");
 		} else {
-			ps.println("2 Le user " + commandeArgs[0] + " n'existe pas");
+			ps.println("2 Le dossier " + commandeArgs[0] + " n'existe pas");
 		}
 	}
 
