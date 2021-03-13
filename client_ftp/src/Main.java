@@ -86,7 +86,7 @@ public class Main {
 
             PrintStream ps = new PrintStream(socket.getOutputStream());
 
-            while(!cmd.equals("DISC")) {
+            while(!cmd.equals("bye")) {
                 String msg = reader.readLine();
                 while(msg.startsWith("1")) {
                     System.out.println(msg);
@@ -99,15 +99,18 @@ public class Main {
                 cmd = scanner.nextLine();
 
                 switch (cmd.split(" ")[0]) {
-                    case "DISC":
-                        break;
-                    case "GET":
+                    case "get":
                         reciveFile(cmd.split(" ")[1]);
                         break;
                     default:
                         ps.println(cmd);
                         break;
                 }
+            }
+
+            if(cmd.equals("bye")) {
+                String msg = reader.readLine();
+                ps.println(cmd);
             }
 
             System.out.println("Déconnexion");
