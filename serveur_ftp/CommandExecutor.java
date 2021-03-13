@@ -26,6 +26,9 @@ public class CommandExecutor {
 				case "stor" :
 					(new CommandeSTOR(ps, commande)).execute();
 					break;
+				case "bye" :
+					ps.println("0 Déconnexion");
+					break;
 				default:
 					ps.println("2 La commande n'existe pas");
 					break;

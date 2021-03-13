@@ -28,11 +28,12 @@ public class Main {
 		String commande = "";
 		
 		// Attente de reception de commandes et leur execution
+
 		while(!(commande=br.readLine()).equals("bye")) {
 			System.out.println(">> "+commande);
 			CommandExecutor.executeCommande(ps, commande);
 		}
-		
+		System.out.println(">> bye\n Déconnexion");
 		serveurFTP.close();
 		socket.close();
 	}

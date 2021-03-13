@@ -73,12 +73,12 @@ public class Main {
         try (Socket socket = new Socket(hostname, port)){
 
             System.out.println("Commandes : \n " +
-                    "- CD: pour changer de répertoire courant du côté du serveur \n " +
-                    "- GET: pour télécharger un fichier du serveur vers le client\n " +
-                    "- LS: afficher la liste des dossiers et des fichiers du répertoire courant du serveur\n " +
+                    "- USER: pour envoyer le nom du login\n " +
                     "- PASS : pour envoyer le mot de passe PWD: pour afficher le chemin absolu du dossier courant\n " +
+                    "- LS: afficher la liste des dossiers et des fichiers du répertoire courant du serveur\n " +
+                    "- CD: pour changer de répertoire courant du côté du serveur \n " +
                     "- STOR : pour envoyer un fichier vers le dossier courant serveur\n " +
-                    "- USER: pour envoyer le nom du login\n ");
+                    "- GET: pour télécharger un fichier du serveur vers le client\n ");
 
             InputStream input = socket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
@@ -89,7 +89,7 @@ public class Main {
 
             PrintStream ps = new PrintStream(socket.getOutputStream());
 
-            while(!cmd.equals("DISC")) {
+            while(!cmd.equals("bye")) {
                 String msg = reader.readLine();
                 while(msg.startsWith("1")) {
                     System.out.println(msg);
@@ -102,8 +102,6 @@ public class Main {
                 cmd = scanner.nextLine();
 
                 switch (cmd.split(" ")[0]) {
-                    case "DISC":
-                        break;
                     case "get":
                         ps.println(cmd);
                         System.out.println(reader.readLine());
@@ -113,6 +111,11 @@ public class Main {
                         ps.println(cmd);
                         break;
                 }
+            }
+
+            if(cmd.equals("bye")) {
+                String msg = reader.readLine();
+                ps.println(cmd);
             }
 
             System.out.println("Déconnexion");
