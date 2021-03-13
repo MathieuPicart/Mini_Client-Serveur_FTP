@@ -12,13 +12,13 @@ public class Main {
         BufferedOutputStream bos = null;
         Socket sock = null;
         try {
-            sock = new Socket("localhost", 2122);
+            sock = new Socket("localhost", 3000);
             System.out.println("Connecting...");
 
             // receive file
             byte [] mybytearray  = new byte [6022386];
             InputStream is = sock.getInputStream();
-            fos = new FileOutputStream("/downlods/"+fileName);
+            fos = new FileOutputStream("/downloads/"+fileName);
             bos = new BufferedOutputStream(fos);
             bytesRead = is.read(mybytearray,0,mybytearray.length);
             current = bytesRead;
@@ -34,10 +34,13 @@ public class Main {
             System.out.println("File " + fileName
                     + " downloaded (" + current + " bytes read)");
         } catch (UnknownHostException e) {
+            System.out.println(e);
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println(e);
             e.printStackTrace();
         } finally {
+            System.out.println("1");
             if (fos != null) {
                 try {
                     fos.close();
@@ -101,7 +104,9 @@ public class Main {
                 switch (cmd.split(" ")[0]) {
                     case "DISC":
                         break;
-                    case "GET":
+                    case "get":
+                        ps.println(cmd);
+                        System.out.println(reader.readLine());
                         reciveFile(cmd.split(" ")[1]);
                         break;
                     default:

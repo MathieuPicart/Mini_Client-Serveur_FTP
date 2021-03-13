@@ -15,6 +15,7 @@ public class Main {
 		System.out.println("Le Serveur FTP");
 		
 		ServerSocket serveurFTP = new ServerSocket(2121);
+		System.out.println(serveurFTP);
 		Socket socket = serveurFTP.accept();
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
