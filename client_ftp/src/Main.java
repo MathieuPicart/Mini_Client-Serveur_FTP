@@ -121,11 +121,10 @@ public class Main {
             System.out.println("Déconnexion");
 
         } catch (UnknownHostException e) {
-            System.out.println(e);
+            System.out.println("euh");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println(e);
-            e.printStackTrace();
+            System.out.println("Euh Houston on a un problème le serveur n'est pas en ligne");
         }
     }
 }
