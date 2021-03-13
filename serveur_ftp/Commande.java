@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.PrintStream;
 
 public abstract class Commande {
@@ -17,6 +18,6 @@ public abstract class Commande {
 		}
 	}
 	
-	public abstract void execute();
+	public abstract void execute() throws IOException;
 
 }

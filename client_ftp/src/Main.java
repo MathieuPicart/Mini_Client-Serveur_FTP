@@ -4,6 +4,64 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class Main {
+
+    public static void reciveFile(String fileName) {
+        int bytesRead;
+        int current = 0;
+        FileOutputStream fos = null;
+        BufferedOutputStream bos = null;
+        Socket sock = null;
+        try {
+            sock = new Socket("localhost", 2122);
+            System.out.println("Connecting...");
+
+            // receive file
+            byte [] mybytearray  = new byte [6022386];
+            InputStream is = sock.getInputStream();
+            fos = new FileOutputStream("/downlods/"+fileName);
+            bos = new BufferedOutputStream(fos);
+            bytesRead = is.read(mybytearray,0,mybytearray.length);
+            current = bytesRead;
+
+            do {
+                bytesRead =
+                        is.read(mybytearray, current, (mybytearray.length-current));
+                if(bytesRead >= 0) current += bytesRead;
+            } while(bytesRead > -1);
+
+            bos.write(mybytearray, 0 , current);
+            bos.flush();
+            System.out.println("File " + fileName
+                    + " downloaded (" + current + " bytes read)");
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (bos != null) {
+                try {
+                    bos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (sock != null) {
+                try {
+                    sock.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         String hostname = "localhost";
@@ -39,8 +97,16 @@ public class Main {
 
                 System.out.println("Saisir votre cmd : ");
                 cmd = scanner.nextLine();
-                if(!cmd.equals("DISC")) {
-                    ps.println(cmd);
+
+                switch (cmd.split(" ")[0]) {
+                    case "DISC":
+                        break;
+                    case "GET":
+                        reciveFile(cmd.split(" ")[1]);
+                        break;
+                    default:
+                        ps.println(cmd);
+                        break;
                 }
             }
 
