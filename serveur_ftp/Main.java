@@ -15,9 +15,7 @@ public class Main {
 		System.out.println("Le Serveur FTP");
 		
 		ServerSocket serveurFTP = new ServerSocket(2121);
-		System.out.println(serveurFTP);
 		Socket socket = serveurFTP.accept();
-		
 		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		PrintStream ps = new PrintStream(socket.getOutputStream());
 		
@@ -29,11 +27,11 @@ public class Main {
 		
 		// Attente de reception de commandes et leur execution
 
-		while(!(commande=br.readLine()).equals("bye")) {
+		while((commande=br.readLine())!=null && !commande.equals("bye")) {
 			System.out.println(">> "+commande);
 			CommandExecutor.executeCommande(ps, commande);
 		}
-		System.out.println(">> bye\n Déconnexion");
+		System.out.println("Déconnexion");
 		serveurFTP.close();
 		socket.close();
 	}
