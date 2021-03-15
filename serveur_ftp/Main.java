@@ -13,27 +13,15 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		System.out.println("Le Serveur FTP");
-		
-		ServerSocket serveurFTP = new ServerSocket(2121);
-		Socket socket = serveurFTP.accept();
-		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		PrintStream ps = new PrintStream(socket.getOutputStream());
-		
-		ps.println("1 Bienvenue ! ");
-		ps.println("1 Serveur FTP Personnel.");
-		ps.println("0 Authentification : ");
-		
-		String commande = "";
-		
-		// Attente de reception de commandes et leur execution
+		int port = 2000;
 
-		while((commande=br.readLine())!=null && !commande.equals("bye")) {
-			System.out.println(">> "+commande);
-			CommandExecutor.executeCommande(ps, commande);
+		while (true) {
+			ServerSocket serveurFTP = new ServerSocket(port);
+			Socket socket = serveurFTP.accept();
+			AccueilClient ac = new AccueilClient(socket, serveurFTP, port);
+			Thread th = new Thread(ac);
+			th.start();
+			port += 3;
 		}
-		System.out.println("Déconnexion");
-		serveurFTP.close();
-		socket.close();
 	}
-
 }

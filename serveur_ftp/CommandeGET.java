@@ -8,7 +8,7 @@ public class CommandeGET extends Commande {
 		super(ps, commandeStr);
 	}
 
-	public void execute() {
+	public void execute(CommandExecutor ce) {
 		System.out.println("Execute get");
 
 		FileInputStream fis = null;
@@ -18,7 +18,7 @@ public class CommandeGET extends Commande {
 		Socket sock = null;
 		String err = "";
 		try {
-			servsock = new ServerSocket(2122);
+			servsock = new ServerSocket(ce.port+1);
 			System.out.println("Waiting...");
 			try {
 				ps.println("1 Nouvelle socket mise en place");
@@ -26,9 +26,9 @@ public class CommandeGET extends Commande {
 				sock = servsock.accept();
 				System.out.println("Accepted connection : " + sock);
 				// send file
-				String filePath = CommandExecutor.racinePath+"/"+CommandExecutor.currentPath+commandeArgs[0];
+				String filePath = ce.racinePath+ce.currentPath+"/"+commandeArgs[0];
 				File myFile = new File (filePath);
-
+				System.out.println(filePath);
 				if(!myFile.exists()){
 					err = "2 Ce fichier n'existe pas";
 				}

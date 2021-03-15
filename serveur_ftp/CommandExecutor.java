@@ -1,30 +1,40 @@
 import java.io.PrintStream;
 
 public class CommandExecutor {
+
+	public boolean userOk;
+	public String user;
+	public String racinePath;
+	public String currentPath;
+	public boolean pwOk;
+	public int port;
+
+	public CommandExecutor(int port) {
+		this.userOk = false;
+		this.user = null;
+		this.racinePath = null;
+		this.currentPath = null;
+		this.pwOk = false;
+		this.port = port;
+	}
 	
-	public static boolean userOk = false ;
-	public static String user = null;
-	public static String racinePath = null;
-	public static String currentPath = null;
-	public static boolean pwOk = false ;
-	
-	public static void executeCommande(PrintStream ps, String commande) {
+	public void executeCommande(PrintStream ps, String commande) throws Exception{
 		if(userOk && pwOk) {
 			switch (commande.split(" ")[0]) {
 				case "cd" :
-					(new CommandeCD(ps, commande)).execute();
+					(new CommandeCD(ps, commande)).execute(this);
 					break;
 				case "get" :
-					(new CommandeGET(ps, commande)).execute();
+					(new CommandeGET(ps, commande)).execute(this);
 					break;
 				case "ls" :
-					(new CommandeLS(ps, commande)).execute();
+					(new CommandeLS(ps, commande)).execute(this);
 					break;
 				case "pwd" :
-					(new CommandePWD(ps, commande)).execute();
+					(new CommandePWD(ps, commande)).execute(this);
 					break;
 				case "stor" :
-					(new CommandeSTOR(ps, commande)).execute();
+					(new CommandeSTOR(ps, commande)).execute(this);
 					break;
 				case "bye" :
 					ps.println("0 Déconnexion");
@@ -39,13 +49,13 @@ public class CommandExecutor {
 			switch (commande.split(" ")[0]) {
 				case "pass":
 					if(userOk) {
-						(new CommandePASS(ps, commande)).execute();
+						(new CommandePASS(ps, commande)).execute(this);
 					} else {
 						ps.println("2 Login n'a pas été saisie");
 					}
 					break;
 				case "user":
-					(new CommandeUSER(ps, commande)).execute();
+					(new CommandeUSER(ps, commande)).execute(this);
 					break;
 				default:
 					ps.println("2 La commande n'existe pas");
@@ -54,5 +64,4 @@ public class CommandExecutor {
 
 		}
 	}
-
 }

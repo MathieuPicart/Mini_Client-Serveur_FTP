@@ -6,11 +6,11 @@ public class CommandeCD extends Commande {
 		super(ps, commandeStr);
 	}
 
-	public void execute() {
-		File dossier = new File(CommandExecutor.racinePath + CommandExecutor.currentPath + "/" + commandeArgs[0]);
+	public void execute(CommandExecutor ce) {
+		File dossier = new File(ce.racinePath + ce.currentPath + "/" + commandeArgs[0]);
 		if (dossier.exists() && dossier.isDirectory()) {
-			if (dossier.toPath().normalize().toString().replace("\\", "/").contains(CommandExecutor.racinePath)) {
-				CommandExecutor.currentPath = dossier.toPath().normalize().toString().replace("\\", "/").replace(CommandExecutor.racinePath,"");
+			if (dossier.toPath().normalize().toString().replace("\\", "/").contains(ce.racinePath)) {
+				ce.currentPath = dossier.toPath().normalize().toString().replace("\\", "/").replace(ce.racinePath,"");
 				ps.println("0 Commande cd OK");
 			} else {
 				ps.println("2 Vous n'avez pas acces au dossier");

@@ -9,7 +9,7 @@ public class CommandeSTOR extends Commande {
 		super(ps, commandeStr);
 	}
 
-	public void execute() {
+	public void execute(CommandExecutor ce) {
 
 		int bytesRead;
 		int current = 0;
@@ -19,7 +19,7 @@ public class CommandeSTOR extends Commande {
 
 		ServerSocket servsock = null;
 		try {
-			servsock = new ServerSocket(2123);
+			servsock = new ServerSocket(ce.port+2);
 			ps.println("1 Ecoute en place");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class CommandeSTOR extends Commande {
 			System.out.println("Socket inutilisable");
 		}
 
-		String filePath = CommandExecutor.racinePath+"/"+CommandExecutor.currentPath+commandeArgs[0];
+		String filePath = ce.racinePath+ce.currentPath+"/"+commandeArgs[0];
 
 		File file = new File(filePath);
 		if(file.exists()){

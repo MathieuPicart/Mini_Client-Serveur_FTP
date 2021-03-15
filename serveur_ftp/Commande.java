@@ -18,6 +18,6 @@ public abstract class Commande {
 		}
 	}
 	
-	public abstract void execute() throws IOException;
+	public abstract void execute(CommandExecutor ce) throws IOException;
 
 }

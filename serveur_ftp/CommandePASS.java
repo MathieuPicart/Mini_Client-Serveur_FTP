@@ -8,14 +8,14 @@ public class CommandePASS extends Commande {
 		super(ps, commandeStr);
 	}
 
-	public void execute() {
+	public void execute(CommandExecutor ce) {
 		try {
-			BufferedReader file = new BufferedReader(new FileReader("users/"+CommandExecutor.user+"/pssd.txt"));
+			BufferedReader file = new BufferedReader(new FileReader("users/"+ce.user+"/pssd.txt"));
 			String pssd = file.readLine();
 			if(commandeArgs[0].toLowerCase().equals(pssd)) {
-				CommandExecutor.pwOk = true;
-				CommandExecutor.currentPath = "";
-				CommandExecutor.racinePath = "users/"+CommandExecutor.user+"/racine";
+				ce.pwOk = true;
+				ce.currentPath = "";
+				ce.racinePath = "users/"+ce.user+"/racine";
 				ps.println("1 Commande pass OK");
 				ps.println("0 Vous êtes bien connecté sur notre serveur");
 			}

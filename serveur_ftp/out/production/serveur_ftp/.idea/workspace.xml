@@ -1,29 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="733c386e-a386-4052-a206-fc6881c1832e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../client_ftp/uploads/text3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client_ftp/downloads/text.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client_ftp/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client_ftp/src/Main.java" afterDir="false" />
+    <list default="true" id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AccueilClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commande.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commande.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandeCD.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeCD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommandeGET.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeGET.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandeLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeLS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandePASS.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandePASS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandePWD.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandePWD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommandeSTOR.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeSTOR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/owen/racine/text2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandeUSER.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeUSER.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProjectId" id="1pcHNTJnHHsanipbsotADCnWaYZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="serveur_ftp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -34,8 +69,21 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="" />
+      <created>1615475418205</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615475418205</updated>
+      <workItem from="1615475421194" duration="5417000" />
+      <workItem from="1615824696061" duration="4024000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

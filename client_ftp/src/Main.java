@@ -14,7 +14,7 @@ public class Main {
         BufferedOutputStream bos = null;
         Socket sock = null;
         try {
-            sock = new Socket("localhost", 2122);
+            sock = new Socket("localhost", 2001);
             // receive file
             byte [] mybytearray  = new byte [6022386];
             InputStream is = sock.getInputStream();
@@ -107,7 +107,7 @@ public class Main {
         System.out.println(msg);
 
         try {
-            sock = new Socket("localhost", 2123);
+            sock = new Socket("localhost", 2002);
         } catch (IOException e) {
             System.out.println("Problème au moment de la connexion au serveur");
         }
@@ -174,7 +174,7 @@ public class Main {
     public static void main(String[] args) {
 
         String hostname = "localhost";
-        int port = 2121;
+        int port = 2000;
 
         try (Socket socket = new Socket(hostname, port)){
 

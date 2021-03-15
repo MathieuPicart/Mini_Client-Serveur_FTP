@@ -7,8 +7,8 @@ public class CommandePWD extends Commande {
 		super(ps, commandeStr);
 	}
 
-	public void execute() {
-		ps.println("0 /" + CommandExecutor.currentPath);
+	public void execute(CommandExecutor ce) {
+		ps.println("0 /" + ce.currentPath);
 	}
 
 }

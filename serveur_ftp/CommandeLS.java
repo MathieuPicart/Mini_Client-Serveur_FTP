@@ -7,17 +7,17 @@ public class CommandeLS extends Commande {
 		super(ps, commandeStr);
 	}
 
-	public void execute() {
+	public void execute(CommandExecutor ce) {
 		File repertoire = null;
 		if(commandeArgs.length != 0) {
-			repertoire = new File(CommandExecutor.racinePath + CommandExecutor.currentPath + "/" + commandeArgs[0]);
+			repertoire = new File(ce.racinePath + ce.currentPath + "/" + commandeArgs[0]);
 
-			if (!repertoire.toPath().normalize().toString().replace("\\", "/").contains(CommandExecutor.racinePath)) {
+			if (!repertoire.toPath().normalize().toString().replace("\\", "/").contains(ce.racinePath)) {
 				ps.println("2 Vous ne pouvez pas remonter si haut");
 				return;
 			}
 		} else {
-			repertoire = new File(CommandExecutor.racinePath + CommandExecutor.currentPath);
+			repertoire = new File(ce.racinePath + ce.currentPath);
 		}
 
 		String liste[] = repertoire.list();
