@@ -22,6 +22,7 @@ public class CommandeSTOR extends Commande {
 			servsock = new ServerSocket(2123);
 			ps.println("1 Ecoute en place");
 		} catch (IOException e) {
+			e.printStackTrace();
 			ps.println("2 Probleme d'ecoute sur ce port");
 			return;
 		}
@@ -108,6 +109,7 @@ public class CommandeSTOR extends Commande {
 			if (fos != null) fos.close();
 			if (bos != null) bos.close();
 			if (sock != null) sock.close();
+			servsock.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -16,16 +16,23 @@ public class CommandeGET extends Commande {
 		OutputStream os = null;
 		ServerSocket servsock = null;
 		Socket sock = null;
+		String err = "";
 		try {
 			servsock = new ServerSocket(2122);
 			System.out.println("Waiting...");
 			try {
 				ps.println("1 Nouvelle socket mise en place");
+				servsock.setSoTimeout(1000);
 				sock = servsock.accept();
 				System.out.println("Accepted connection : " + sock);
 				// send file
 				String filePath = CommandExecutor.racinePath+"/"+CommandExecutor.currentPath+commandeArgs[0];
 				File myFile = new File (filePath);
+
+				if(!myFile.exists()){
+					err = "2 Ce fichier n'existe pas";
+				}
+
 				byte [] mybytearray  = new byte [(int)myFile.length()];
 				fis = new FileInputStream(myFile);
 				bis = new BufferedInputStream(fis);
@@ -43,8 +50,8 @@ public class CommandeGET extends Commande {
 				if (sock != null) sock.close();
 			}
 		} catch (IOException e) {
-			System.out.println(e);
-			e.printStackTrace();
+			System.out.println(err);
+			ps.println(err);
 		} finally {
 			if (servsock != null) {
 				try {

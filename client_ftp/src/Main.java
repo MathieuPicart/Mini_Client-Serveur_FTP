@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void reciveFile(String fileName) {
+    public static void reciveFile(BufferedReader reader, String fileName) {
 
         int bytesRead;
         int current = 0;
@@ -29,14 +29,30 @@ public class Main {
                 if(bytesRead >= 0) current += bytesRead;
             } while(bytesRead > -1);
 
+            String msg = reader.readLine();
+
+            while(msg!=null){
+                if (msg.split(" ")[0].equals("2")) {
+                    throw new IOException(msg);
+                }
+                System.out.println(msg);
+
+                if(msg.startsWith("0")){
+                    break;
+                }
+
+                msg = reader.readLine();
+            }
+
             bos.write(mybytearray, 0 , current);
             bos.flush();
         } catch (UnknownHostException e) {
             System.out.println("Connexion avec le serveur à échoué");
+            (new File("downloads/"+fileName)).delete();
             return;
         } catch (IOException e) {
-            System.out.println(e);
-            e.printStackTrace();
+            (new File("downloads/"+fileName)).delete();
+            System.out.println("Une erreur est survenue : "+e);
         } finally {
             if (fos != null) {
                 try {
@@ -175,18 +191,22 @@ public class Main {
 
             Scanner scanner = new Scanner( System.in );
 
-            String cmd = " ";
+            String cmd = "yo dab";
 
             PrintStream ps = new PrintStream(socket.getOutputStream());
+            String msg = "";
 
             while(!cmd.equals("bye")) {
-                String msg = reader.readLine();
-                while(msg.startsWith("1")) {
-                    System.out.println(msg);
+                if(!cmd.split(" ")[0].equals("get")) {
                     msg = reader.readLine();
-                }
 
-                System.out.println(msg);
+                    while (msg != null && msg.startsWith("1")) {
+                        System.out.println(msg);
+                        msg = reader.readLine();
+                    }
+
+                    if (msg != null) System.out.println(msg);
+                }
 
                 System.out.println("Saisir votre cmd : ");
                 cmd = scanner.nextLine();
@@ -208,7 +228,7 @@ public class Main {
 
                         ps.println(cmd);
                         System.out.println(reader.readLine());
-                        reciveFile(cmd.split(" ")[1]);
+                        reciveFile(reader, cmd.split(" ")[1]);
                         break;
                     case "stor":
                         ps.println(cmd);
@@ -221,7 +241,7 @@ public class Main {
             }
 
             if(cmd.equals("bye")) {
-                String msg = reader.readLine();
+                msg = reader.readLine();
                 ps.println(cmd);
             }
 
