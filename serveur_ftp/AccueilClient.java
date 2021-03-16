@@ -38,10 +38,16 @@ public class AccueilClient implements Runnable {
             System.out.println("Déconnexion");
             serveurFTP.close();
             socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            try {
+                serveurFTP.close();
+                socket.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
         }
 
     }
