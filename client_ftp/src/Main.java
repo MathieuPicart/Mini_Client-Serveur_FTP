@@ -104,16 +104,7 @@ public class Main {
             if (msg.startsWith("2")) {
                 throw new Exception(msg);
             }
-
-<<<<<<< HEAD
-        try {
             sock = new Socket("localhost", port+2);
-        } catch (IOException e) {
-            System.out.println("Problème au moment de la connexion au serveur");
-        }
-=======
-            sock = new Socket("localhost", 2002);
->>>>>>> fa026635ea458e9177ca0e1b39a3a6f70e1defc3
 
             while (!msg.equals("1 Lecture prêt")) {
                 if(msg.startsWith("2")){
@@ -154,11 +145,12 @@ public class Main {
             String portString = filePort.readLine();
             System.out.println(portString);
             port = Integer.parseInt(portString);
-            //Incrémenter port dans le fichier
             File fileD = new File("port.txt");
             fileD.delete();
             fileD.createNewFile();
-           
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileD.getAbsoluteFile()));
+            bw.write((port+3)+"");
+            bw.close();
 
 
         } catch (FileNotFoundException e) {
