@@ -24,11 +24,10 @@ public class CommandeSTOR extends Commande {
 		try {
 			File file = new File(filePath);
 			if (file.exists()) {
-				ps.println("2 Le fichier existe deja");
+				throw new Exception("Le fichier existe deja");
 			} else {
 				file.createNewFile();
 				ps.println("1 Fichier créé");
-
 			}
 
 			servsock = new ServerSocket(ce.port + 2);
@@ -56,7 +55,7 @@ public class CommandeSTOR extends Commande {
 			bos.write(mybytearray, 0, current);
 
 			bos.flush();
-			
+			ps.println("0 Fichier uploadé");
 		}catch (Exception e){
 			System.out.println(e);
 			ps.println("2 "+e);
@@ -65,16 +64,12 @@ public class CommandeSTOR extends Commande {
 				if (fos != null) fos.close();
 				if (bos != null) bos.close();
 				if (sock != null) sock.close();
-				servsock.close();
+				if (servsock != null) servsock.close();
 			} catch (IOException e) {
 				System.out.println(e);
-				ps.println("2 "+e);
-				return;
 			}
-			System.out.println("dab");
-			ps.println("0 Fichier uploadé");
 		}
-
+		return;
 	}
 
 }

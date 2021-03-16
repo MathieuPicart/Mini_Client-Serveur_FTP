@@ -1,10 +1,8 @@
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 ;import java.io.FileReader;
-import java.nio.Buffer;
 
 public class Main {
 
@@ -53,31 +51,16 @@ public class Main {
         } catch (UnknownHostException e) {
             System.out.println("Connexion avec le serveur à échoué");
             (new File("downloads/"+fileName)).delete();
-            return;
         } catch (IOException e) {
             (new File("downloads/"+fileName)).delete();
             System.out.println("Une erreur est survenue : "+e);
         } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (bos != null) {
-                try {
-                    bos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (sock != null) {
-                try {
-                    sock.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try {
+                if (fos != null) fos.close();
+                if (bos != null) bos.close();
+                if (sock != null) sock.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -94,16 +77,17 @@ public class Main {
 
         try {
             msg = reader.readLine();
-            System.out.println(msg);
             if (msg.startsWith("2")) {
                 throw new Exception(msg);
             }
+            System.out.println(msg);
 
             msg = reader.readLine();
-            System.out.println(msg);
             if (msg.startsWith("2")) {
                 throw new Exception(msg);
             }
+            System.out.println(msg);
+
             sock = new Socket("localhost", port+2);
 
             while (!msg.equals("1 Lecture prêt")) {
@@ -239,8 +223,7 @@ public class Main {
             System.out.println("Déconnexion");
 
         } catch (UnknownHostException e) {
-            System.out.println("euh");
-            e.printStackTrace();
+            System.out.println(e);
         } catch (IOException e) {
             System.out.println("Euh Houston on a un problème le serveur n'est pas en ligne");
         }
