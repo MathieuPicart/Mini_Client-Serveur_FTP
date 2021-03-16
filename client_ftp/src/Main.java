@@ -3,8 +3,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
+;import java.io.FileReader;
+import java.nio.Buffer;
 
 public class Main {
+
+    public static int port;
 
     public static void reciveFile(BufferedReader reader, String fileName) {
 
@@ -14,7 +18,7 @@ public class Main {
         BufferedOutputStream bos = null;
         Socket sock = null;
         try {
-            sock = new Socket("localhost", 2001);
+            sock = new Socket("localhost", port+1);
             // receive file
             byte [] mybytearray  = new byte [6022386];
             InputStream is = sock.getInputStream();
@@ -107,7 +111,7 @@ public class Main {
         System.out.println(msg);
 
         try {
-            sock = new Socket("localhost", 2002);
+            sock = new Socket("localhost", port+2);
         } catch (IOException e) {
             System.out.println("Problème au moment de la connexion au serveur");
         }
@@ -174,7 +178,26 @@ public class Main {
     public static void main(String[] args) {
 
         String hostname = "localhost";
-        int port = 2000;
+        BufferedReader filePort = null;
+        try {
+            filePort = new BufferedReader(new FileReader("port.txt"));
+            String portString = filePort.readLine();
+            System.out.println(portString);
+            port = Integer.parseInt(portString);
+            //Incrémenter port dans le fichier
+            File fileD = new File("port.txt");
+            fileD.delete();
+            fileD.createNewFile();
+           
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
 
         try (Socket socket = new Socket(hostname, port)){
 
