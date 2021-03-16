@@ -179,10 +179,12 @@ public class Main {
         try (Socket socket = new Socket(hostname, port)){
 
             System.out.println("Commandes : \n " +
-                    "- USER: pour envoyer le nom du login\n " +
+                    "- USER : pour envoyer le nom du login\n " +
                     "- PASS : pour envoyer le mot de passe PWD: pour afficher le chemin absolu du dossier courant\n " +
-                    "- LS: afficher la liste des dossiers et des fichiers du répertoire courant du serveur\n " +
-                    "- CD: pour changer de répertoire courant du côté du serveur \n " +
+                    "- LS : afficher la liste des dossiers et des fichiers du répertoire courant du serveur\n " +
+                    "- CD : pour changer de répertoire courant du côté du serveur \n " +
+                    "- MKDIR : pour créer un répertoire du côté du serveur \n " +
+                    "- RMDIR : pour supprimer un répertoire du côté du serveur \n " +
                     "- STOR : pour envoyer un fichier vers le dossier courant serveur\n " +
                     "- GET: pour télécharger un fichier du serveur vers le client\n ");
 
