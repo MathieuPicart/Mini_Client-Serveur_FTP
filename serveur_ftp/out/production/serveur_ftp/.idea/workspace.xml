@@ -1,35 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AccueilClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commande.java" beforeDir="false" afterPath="$PROJECT_DIR$/Commande.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandeCD.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeCD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandeGET.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeGET.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandeLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeLS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandePASS.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandePASS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandePWD.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandePWD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandeSTOR.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeSTOR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandeUSER.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeUSER.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1pcHNTJnHHsanipbsotADCnWaYZ" />
+  <component name="ProjectId" id="1pcEs2ioxvY9BBAieObkBrGghI5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,25 +21,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="serveur_ftp" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -73,12 +46,15 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="" />
-      <created>1615475418205</created>
+      <created>1615474185776</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1615475418205</updated>
-      <workItem from="1615475421194" duration="5417000" />
-      <workItem from="1615824696061" duration="4024000" />
+      <updated>1615474185776</updated>
+      <workItem from="1615474193093" duration="205000" />
+      <workItem from="1615474413974" duration="6015000" />
+      <workItem from="1615637615429" duration="5954000" />
+      <workItem from="1615820472077" duration="593000" />
+      <workItem from="1615879774270" duration="450000" />
     </task>
     <servers />
   </component>
