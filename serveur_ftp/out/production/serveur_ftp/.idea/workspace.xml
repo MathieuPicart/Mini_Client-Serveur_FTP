@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="733c386e-a386-4052-a206-fc6881c1832e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CommandeSTOR.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommandeSTOR.java" afterDir="false" />
+    <list default="true" id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../client_ftp/port.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../client_ftp/port.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/serveur_ftp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/serveur_ftp/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +13,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1pnjdsN3GGOV80J5nTLK5WbfUhZ" />
+  <component name="ProjectId" id="1pcEs2ioxvY9BBAieObkBrGghI5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -22,8 +24,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -42,12 +48,19 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="733c386e-a386-4052-a206-fc6881c1832e" name="Default Changelist" comment="" />
-      <created>1615825848688</created>
+      <changelist id="3847b95f-eee6-408f-af72-522a22088fe8" name="Default Changelist" comment="" />
+      <created>1615474185776</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1615825848688</updated>
-      <workItem from="1615825856306" duration="8718000" />
+      <updated>1615474185776</updated>
+      <workItem from="1615474193093" duration="205000" />
+      <workItem from="1615474413974" duration="6015000" />
+      <workItem from="1615637615429" duration="5954000" />
+      <workItem from="1615820472077" duration="593000" />
+      <workItem from="1615879774270" duration="4250000" />
+      <workItem from="1615888442012" duration="851000" />
+      <workItem from="1615904014772" duration="1967000" />
+      <workItem from="1615913264908" duration="51000" />
     </task>
     <servers />
   </component>

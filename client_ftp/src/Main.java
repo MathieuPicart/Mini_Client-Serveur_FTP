@@ -127,7 +127,6 @@ public class Main {
         try {
             filePort = new BufferedReader(new FileReader("port.txt"));
             String portString = filePort.readLine();
-            System.out.println(portString);
             port = Integer.parseInt(portString);
             File fileD = new File("port.txt");
             fileD.delete();
@@ -135,8 +134,6 @@ public class Main {
             BufferedWriter bw = new BufferedWriter(new FileWriter(fileD.getAbsoluteFile()));
             bw.write((port+3)+"");
             bw.close();
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return;
