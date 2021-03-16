@@ -12,7 +12,10 @@ public class CommandePASS extends Commande {
 		try {
 			BufferedReader file = new BufferedReader(new FileReader("users/"+ce.user+"/pssd.txt"));
 			String pssd = file.readLine();
+			//On vérifie si le mdp saisie par l'utilisateur est bien égale a celui stocké dans pssd.txt
 			if(commandeArgs[0].toLowerCase().equals(pssd)) {
+				//Si oui on passe "pwOk" a true pour pouvoir passer a la suite
+				//On initialise aussi currentPath et racinePath pour cette utilisateur spécifique
 				ce.pwOk = true;
 				ce.currentPath = "";
 				ce.racinePath = "users/"+ce.user+"/racine";
@@ -20,6 +23,7 @@ public class CommandePASS extends Commande {
 				ps.println("0 Vous êtes bien connecté sur notre serveur");
 			}
 			else {
+				//Sinon on affiche une erreur
 				ps.println("2 Le mode de passe est faux");
 			}
 		} catch (FileNotFoundException e) {

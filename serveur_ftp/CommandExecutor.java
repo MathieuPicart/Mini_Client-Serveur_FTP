@@ -10,6 +10,7 @@ public class CommandExecutor {
 	public int port;
 
 	public CommandExecutor(int port) {
+		//On initialise les variables
 		this.userOk = false;
 		this.user = null;
 		this.racinePath = null;
@@ -19,8 +20,10 @@ public class CommandExecutor {
 	}
 	
 	public void executeCommande(PrintStream ps, String commande) throws Exception{
+		//On vérifie si l'utilisateur est bien connecté
 		if(userOk && pwOk) {
 			switch (commande.split(" ")[0]) {
+				//Si la commande est définie (et autorisée) on l'exécute, sinon on affiche une erreur
 				case "cd" :
 					(new CommandeCD(ps, commande)).execute(this);
 					break;
@@ -49,9 +52,8 @@ public class CommandExecutor {
 					ps.println("2 La commande n'existe pas");
 					break;
 			}
-
 		} else {
-
+			//Si il n'est pas connecté on vérifie si la commande est définie (et autorisée) on l'exécute, sinon on affiche une erreur
 			switch (commande.split(" ")[0]) {
 				case "pass":
 					if(userOk) {
@@ -67,7 +69,6 @@ public class CommandExecutor {
 					ps.println("2 La commande n'existe pas");
 					break;
 			}
-
 		}
 	}
 }

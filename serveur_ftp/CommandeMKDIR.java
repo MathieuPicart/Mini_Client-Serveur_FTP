@@ -8,19 +8,16 @@ public class CommandeMKDIR extends Commande{
     }
 
     public void execute(CommandExecutor ce) {
-        File dossier = new File(ce.racinePath+ce.currentPath);
-        if (dossier.exists() && dossier.isDirectory()){
-            File newDossier = new File(ce.racinePath+ce.currentPath+"/"+commandeArgs[0]);
-            if (!newDossier.exists() && (commandeArgs.length < 2) && newDossier.toPath().normalize().toString().replace("\\", "/").contains(ce.racinePath)) {
-                newDossier.mkdir();
-                ps.println("0 Commande mkdir OK");
-            } else {
-                ps.println("2 Vous n'avez pas les droits de crée un dossier ici");
-            }
+        File newDossier = new File(ce.racinePath+ce.currentPath+"/"+commandeArgs[0]);
+        //On vérifie que le dossier n'existe pas déjà et on vérifie que le chemin contient au moins la racine (que l'utilisateur ne cherche pas a remonter trop haut)
+        if (!newDossier.exists() && (commandeArgs.length < 2) && newDossier.toPath().normalize().toString().replace("\\", "/").contains(ce.racinePath)) {
+            //Si oui on le créer
+            newDossier.mkdir();
+            ps.println("0 Commande mkdir OK");
         } else {
-            ps.println("2 Erreur de merde jsp");
+            //Sinon on affiche une erreur
+            ps.println("2 Vous n'avez pas les droits de crée un dossier ici");
         }
-
     }
 
 }

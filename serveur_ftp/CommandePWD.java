@@ -7,6 +7,7 @@ public class CommandePWD extends Commande {
 		super(ps, commandeStr);
 	}
 
+	//On affiche le dossier courant
 	public void execute(CommandExecutor ce) {
 		ps.println("0 /" + ce.currentPath);
 	}
