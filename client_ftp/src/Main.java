@@ -81,92 +81,54 @@ public class Main {
     public static void uploadFile(BufferedReader reader, String fileName){
         String filePath = "uploads/"+fileName;
         File myFile = new File (filePath);
-        if(!myFile.exists()) {
-            System.out.println("Le fichier " + filePath + " n'existe pas");
-            return;
-        }
 
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         OutputStream os = null;
         Socket sock = null;
         String msg = null;
+
         try {
             msg = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        while(msg==null){
-            try {
-                msg = reader.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
+            System.out.println(msg);
+            if (msg.startsWith("2")) {
+                throw new Exception(msg);
             }
-        }
-        System.out.println(msg);
 
-        try {
+            msg = reader.readLine();
+            System.out.println(msg);
+            if (msg.startsWith("2")) {
+                throw new Exception(msg);
+            }
+
             sock = new Socket("localhost", 2002);
-        } catch (IOException e) {
-            System.out.println("Problème au moment de la connexion au serveur");
-        }
 
-        while(!msg.equals("1 Lecture prêt")){
-            try {
+            while (!msg.equals("1 Lecture prêt")) {
+                if(msg.startsWith("2")){
+                    throw new Exception(msg);
+                }
                 msg = reader.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            if(msg!=null) {
                 System.out.println(msg);
             }
-        }
 
-        byte [] mybytearray  = new byte [(int)myFile.length()];
-        try {
+            byte[] mybytearray = new byte[(int) myFile.length()];
             fis = new FileInputStream(myFile);
-        } catch (FileNotFoundException e) {
-            System.out.println("Problème de gestion de fichier");
-            return;
-        }
-
-        bis = new BufferedInputStream(fis);
-
-        try {
-            bis.read(mybytearray,0,mybytearray.length);
-        } catch (IOException e) {
-            System.out.println("Problème de lecture du fichier");
-        }
-
-        try {
+            bis = new BufferedInputStream(fis);
+            bis.read(mybytearray, 0, mybytearray.length);
             os = sock.getOutputStream();
-        } catch (IOException e) {
-            System.out.println("Problème au niveau de la socket");
-            return;
-        }
-
-        try {
-            os.write(mybytearray,0,mybytearray.length);
-        } catch (IOException e) {
-            System.out.println("Problème d'écriture au moment de l'envoie");
-            return;
-        }
-
-        try {
+            os.write(mybytearray, 0, mybytearray.length);
             os.flush();
-        } catch (IOException e) {
-            System.out.println("Problème au moment de l'envoie");
-            return;
-        }
-
-        try {
-            if (bis != null) bis.close();
-            if (os != null) os.close();
-            if (sock != null) sock.close();
-        } catch (IOException e) {
-            System.out.println("Problème au moment de la fermeture");
+            System.out.println(reader.readLine());
+        }catch (Exception e){
+            System.out.println("Probleme au moment de l'execution : "+e);
+        } finally {
+            try {
+                if (bis != null) bis.close();
+                if (os != null) os.close();
+                if (sock != null) sock.close();
+            }catch (IOException e){
+                System.out.println("Probleme au moment de la fermeture des sockets");
+            }
         }
 
     }
@@ -197,7 +159,7 @@ public class Main {
             String msg = "";
 
             while(!cmd.equals("bye")) {
-                if(!cmd.split(" ")[0].equals("get")) {
+                if(!cmd.split(" ")[0].equals("get") && !cmd.split(" ")[0].equals("stor")) {
                     msg = reader.readLine();
 
                     while (msg != null && msg.startsWith("1")) {
@@ -231,6 +193,10 @@ public class Main {
                         reciveFile(reader, cmd.split(" ")[1]);
                         break;
                     case "stor":
+                        if(!(new File("uploads/"+cmd.split(" ")[1])).exists()) {
+                            System.out.println("Le fichier uploads/"+cmd.split(" ")[1]+" n'existe pas");
+                            break;
+                        }
                         ps.println(cmd);
                         uploadFile(reader, cmd.split(" ")[1]);
                         break;
