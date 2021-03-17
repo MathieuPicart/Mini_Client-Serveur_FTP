@@ -3,7 +3,7 @@ import java.io.PrintStream;
 public class CommandExecutor {
 
 	public boolean userOk;
-	public String user;
+	public String login;
 	public String racinePath;
 	public String currentPath;
 	public boolean pwOk;
@@ -12,7 +12,7 @@ public class CommandExecutor {
 	public CommandExecutor(int port) {
 		//On initialise les variables
 		this.userOk = false;
-		this.user = null;
+		this.login = null;
 		this.racinePath = null;
 		this.currentPath = null;
 		this.pwOk = false;

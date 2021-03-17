@@ -8,7 +8,7 @@ public class Main {
 
     public static int port;
 
-    public static void reciveFile(BufferedReader reader, String fileName) {
+    public static void downloadFile(BufferedReader reader, String fileName) {
 
         int bytesRead;
         int current = 0;
@@ -16,8 +16,10 @@ public class Main {
         BufferedOutputStream bos = null;
         Socket sock = null;
         try {
+            //connexion à la socket de réception
             sock = new Socket("localhost", port+1);
-            // receive file
+
+            //paramétrage des variables
             byte [] mybytearray  = new byte [6022386];
             InputStream is = sock.getInputStream();
             fos = new FileOutputStream("downloads/"+fileName);
@@ -25,6 +27,7 @@ public class Main {
             bytesRead = is.read(mybytearray,0,mybytearray.length);
             current = bytesRead;
 
+            //Lecture de l'envoie
             do {
                 bytesRead =
                         is.read(mybytearray, current, (mybytearray.length-current));
@@ -33,6 +36,7 @@ public class Main {
 
             String msg = reader.readLine();
 
+            //Réception et gestion des messages d'éxécution
             while(msg!=null){
                 if (msg.split(" ")[0].equals("2")) {
                     throw new IOException(msg);
@@ -46,6 +50,7 @@ public class Main {
                 msg = reader.readLine();
             }
 
+            //Écriture dans le fichier
             bos.write(mybytearray, 0 , current);
             bos.flush();
         } catch (UnknownHostException e) {
@@ -76,6 +81,8 @@ public class Main {
         String msg = null;
 
         try {
+
+            //Réception des message d'initialisation du serveur
             msg = reader.readLine();
             if (msg.startsWith("2")) {
                 throw new Exception(msg);
@@ -88,8 +95,10 @@ public class Main {
             }
             System.out.println(msg);
 
+            //Connexion à la socket d'envoie
             sock = new Socket("localhost", port+2);
 
+            //En attente du serveur
             while (!msg.equals("1 Lecture prêt")) {
                 if(msg.startsWith("2")){
                     throw new Exception(msg);
@@ -98,16 +107,21 @@ public class Main {
                 System.out.println(msg);
             }
 
+            //Paramétrage des variables
             byte[] mybytearray = new byte[(int) myFile.length()];
             fis = new FileInputStream(myFile);
             bis = new BufferedInputStream(fis);
+
+            //Lecture des données du fichier
             bis.read(mybytearray, 0, mybytearray.length);
             os = sock.getOutputStream();
+
+            //Écriture dans le fichier
             os.write(mybytearray, 0, mybytearray.length);
             os.flush();
             System.out.println(reader.readLine());
         }catch (Exception e){
-            System.out.println("Probleme au moment de l'execution : "+e);
+            System.out.println(e);
         } finally {
             try {
                 if (bis != null) bis.close();
@@ -124,6 +138,8 @@ public class Main {
 
         String hostname = "localhost";
         BufferedReader filePort = null;
+
+        //Initialisation du port + incrémentation pour prochain client
         try {
             filePort = new BufferedReader(new FileReader("port.txt"));
             String portString = filePort.readLine();
@@ -142,17 +158,20 @@ public class Main {
             return;
         }
 
+        System.out.println("Terminal client port : "+port);
+
+        //Connexion au serveur
         try (Socket socket = new Socket(hostname, port)){
 
             System.out.println("Commandes : \n " +
-                    "- USER : pour envoyer le nom du login\n " +
-                    "- PASS : pour envoyer le mot de passe PWD: pour afficher le chemin absolu du dossier courant\n " +
-                    "- LS : afficher la liste des dossiers et des fichiers du répertoire courant du serveur\n " +
-                    "- CD : pour changer de répertoire courant du côté du serveur \n " +
-                    "- MKDIR : pour créer un répertoire du côté du serveur \n " +
-                    "- RMDIR : pour supprimer un répertoire du côté du serveur \n " +
-                    "- STOR : pour envoyer un fichier vers le dossier courant serveur\n " +
-                    "- GET: pour télécharger un fichier du serveur vers le client\n ");
+                    "- user (pseudo) : pour envoyer le nom du login\n " +
+                    "- pass (mot de passe) : pour envoyer le mot de passe PWD: pour afficher le chemin absolu du dossier courant\n " +
+                    "- ls : afficher la liste des dossiers et des fichiers du répertoire courant du serveur\n " +
+                    "- cd (chemin destination) : pour changer de répertoire courant du côté du serveur \n " +
+                    "- mkdir (nom du dossier) : pour créer un répertoire du côté du serveur \n " +
+                    "- rmdir (nom du dossier) : pour supprimer un répertoire du côté du serveur \n " +
+                    "- stor (nom du fichier) : pour envoyer un fichier vers le dossier courant serveur\n " +
+                    "- get (nom du fichier) : pour télécharger un fichier du serveur vers le client\n ");
 
             InputStream input = socket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
@@ -164,7 +183,10 @@ public class Main {
             PrintStream ps = new PrintStream(socket.getOutputStream());
             String msg = "";
 
+            //Boucle d'interaction client serveur fin a commande "bye"
             while(!cmd.equals("bye")) {
+
+                //Lecture des messages
                 if(!cmd.split(" ")[0].equals("get") && !cmd.split(" ")[0].equals("stor")) {
                     msg = reader.readLine();
 
@@ -177,16 +199,20 @@ public class Main {
                 }
 
                 System.out.println("Saisir votre cmd : ");
+                //En attente de saisie du client
                 cmd = scanner.nextLine();
 
+                //traitement des commande et des commandes spécifiques
                 switch (cmd.split(" ")[0]) {
                     case "get":
+                        //vérification que le fichier n'éxiste pas
                         File file = new File("downloads/"+cmd.split(" ")[1]);
                         if(file.exists()) {
                             System.out.println("Ce fichier existe déja dans votre dossier /downloads");
                             break;
                         }
 
+                        //crétion du fichier
                         try {
                             file.createNewFile();
                         } catch (IOException e) {
@@ -195,15 +221,21 @@ public class Main {
                         }
 
                         ps.println(cmd);
+
+                        //Reception du message "prêt" du serveur
                         System.out.println(reader.readLine());
-                        reciveFile(reader, cmd.split(" ")[1]);
+
+                        //Lancement de la méthode de reception
+                        downloadFile(reader, cmd.split(" ")[1]);
                         break;
                     case "stor":
+                        //Vérification de l'existance du fichier
                         if(!(new File("uploads/"+cmd.split(" ")[1])).exists()) {
                             System.out.println("Le fichier uploads/"+cmd.split(" ")[1]+" n'existe pas");
                             break;
                         }
                         ps.println(cmd);
+                        //Lancement de la méthode d'envoie
                         uploadFile(reader, cmd.split(" ")[1]);
                         break;
                     default:
@@ -212,6 +244,7 @@ public class Main {
                 }
             }
 
+            //gestion de la commande de déconnexion
             if(cmd.equals("bye")) {
                 msg = reader.readLine();
                 ps.println(cmd);
@@ -219,6 +252,7 @@ public class Main {
 
             System.out.println("Déconnexion");
 
+        //gestion des erreurs de connexion
         } catch (UnknownHostException e) {
             System.out.println(e);
         } catch (IOException e) {

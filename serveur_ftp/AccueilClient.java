@@ -23,6 +23,8 @@ public class AccueilClient implements Runnable {
             PrintStream ps = new PrintStream(socket.getOutputStream());
             CommandExecutor ce = new CommandExecutor(port);
 
+            //envoiemessage bienvenue
+
             ps.println("1 Bienvenue ! ");
             ps.println("1 Serveur FTP Personnel.");
             ps.println("0 Authentification : ");
@@ -35,6 +37,9 @@ public class AccueilClient implements Runnable {
                 System.out.println(">> "+commande);
                 ce.executeCommande(ps, commande);
             }
+
+            //Commandes "bye" recu
+            //Deconnexion de l'utilisateur et fermeture de la socket
             System.out.println("Déconnexion");
             serveurFTP.close();
             socket.close();

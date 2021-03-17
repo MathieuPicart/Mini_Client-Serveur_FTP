@@ -14,7 +14,7 @@ public class CommandeUSER extends Commande {
 		if (dossier.exists() && dossier.isDirectory()){
 			//Si oui on passe "userOk" a true pour pouvoir passer a la suite
 			ce.userOk = true;
-			ce.user = commandeArgs[0].toLowerCase();
+			ce.login = commandeArgs[0].toLowerCase();
 			ps.println("0 Commande user OK");
 		} else {
 			//Sinon on affiche une erreur

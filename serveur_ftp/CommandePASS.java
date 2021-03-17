@@ -10,7 +10,7 @@ public class CommandePASS extends Commande {
 
 	public void execute(CommandExecutor ce) {
 		try {
-			BufferedReader file = new BufferedReader(new FileReader("users/"+ce.user+"/pssd.txt"));
+			BufferedReader file = new BufferedReader(new FileReader("users/"+ce.login+"/pssd.txt"));
 			String pssd = file.readLine();
 			//On vérifie si le mdp saisie par l'utilisateur est bien égale a celui stocké dans pssd.txt
 			if(commandeArgs[0].toLowerCase().equals(pssd)) {
@@ -18,7 +18,7 @@ public class CommandePASS extends Commande {
 				//On initialise aussi currentPath et racinePath pour cette utilisateur spécifique
 				ce.pwOk = true;
 				ce.currentPath = "";
-				ce.racinePath = "users/"+ce.user+"/racine";
+				ce.racinePath = "users/"+ce.login+"/racine";
 				ps.println("1 Commande pass OK");
 				ps.println("0 Vous êtes bien connecté sur notre serveur");
 			}

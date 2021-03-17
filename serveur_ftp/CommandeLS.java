@@ -9,6 +9,7 @@ public class CommandeLS extends Commande {
 
 	public void execute(CommandExecutor ce) {
 		File repertoire = null;
+
 		//On vérifie si il y a un argument
 		if(commandeArgs.length != 0) {
 			//si oui on ajoute le chemin spécifié en argument au chemin courant a la commande
@@ -23,6 +24,7 @@ public class CommandeLS extends Commande {
 			//sinon on effectue la commande avec uniquement le chemin courant
 			repertoire = new File(ce.racinePath + ce.currentPath);
 		}
+
 		//On enregistre le nom des dossier(s)/fichier(s) dans un tableau
 		String liste[] = repertoire.list();
 		String res = "";

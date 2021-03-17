@@ -22,6 +22,7 @@ public class CommandeSTOR extends Commande {
 		String filePath = ce.racinePath+ce.currentPath+"/"+commandeArgs[0];
 
 		try {
+			//Vérification que le fichier n'existe pas et création
 			File file = new File(filePath);
 			if (file.exists()) {
 				throw new Exception("Le fichier existe deja");
@@ -34,10 +35,10 @@ public class CommandeSTOR extends Commande {
 			ps.println("1 Ecoute en place");
 
 			servsock.setSoTimeout(1000);
-
+			//Attente de connexion du client
 			sock = servsock.accept();
 
-
+			//Parmétrage des éléments
 			byte[] mybytearray = new byte[6022386];
 
 			InputStream is = null;
@@ -47,17 +48,18 @@ public class CommandeSTOR extends Commande {
 
 			bos = new BufferedOutputStream(fos);
 			bytesRead = 0;
+
+			//informe le client que le serveur est prêt
 			ps.println("1 Lecture prêt");
 			bytesRead = is.read(mybytearray, 0, mybytearray.length);
 
 			current = bytesRead;
-
+			//Ecriture dans le fichier
 			bos.write(mybytearray, 0, current);
 
 			bos.flush();
 			ps.println("0 Fichier uploadé");
 		}catch (Exception e){
-			System.out.println(e);
 			ps.println("2 "+e);
 		}finally {
 			try {
