@@ -42,8 +42,8 @@ public class CommandExecutor {
 				case "mkdir" :
 					(new CommandeMKDIR(ps, commande)).execute(this);
 					break;
-				case "rmdir" :
-					(new CommandeRMDIR(ps, commande)).execute(this);
+				case "rm" :
+					(new CommandeRM(ps, commande)).execute(this);
 					break;
 				case "bye" :
 					ps.println("0 Déconnexion");

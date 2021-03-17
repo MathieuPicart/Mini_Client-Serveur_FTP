@@ -2,9 +2,9 @@ import java.io.File;
 
 import java.io.PrintStream;
 
-public class CommandeRMDIR extends Commande {
+public class CommandeRM extends Commande {
 
-    public CommandeRMDIR(PrintStream ps, String commandeStr) {
+    public CommandeRM(PrintStream ps, String commandeStr) {
         super(ps, commandeStr);
     }
 
