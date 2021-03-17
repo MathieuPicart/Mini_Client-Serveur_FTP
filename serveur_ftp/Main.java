@@ -10,7 +10,7 @@ import java.net.Socket;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		System.out.println("Le Serveur FTP");
+		System.out.println("Terminal SERVEUR");
 		int port = 2000;
 		BufferedReader filePort = null;
 		try {
@@ -28,12 +28,12 @@ public class Main {
 			e.printStackTrace();
 			return;
 		}
-
+		System.out.println("En attente de clients...");
 		//Boucle de reception des nouveaux clients
 		while (true) {
 			ServerSocket serveurFTP = new ServerSocket(port);
 			Socket socket = serveurFTP.accept();
-
+			System.out.println("Nouveau client connecté : "+port);
 			//A chaque nouveau clients un thread lui est attribué
 
 			AccueilClient ac = new AccueilClient(socket, serveurFTP, port);

@@ -34,13 +34,13 @@ public class AccueilClient implements Runnable {
             // Attente de reception de commandes et leur execution
 
             while((commande=br.readLine())!=null && !commande.equals("bye")) {
-                System.out.println(">> "+commande);
+                System.out.println(""+port+" >> "+commande);
                 ce.executeCommande(ps, commande);
             }
 
             //Commandes "bye" recu
             //Deconnexion de l'utilisateur et fermeture de la socket
-            System.out.println("Déconnexion");
+            System.out.println("Déconnexion port : "+port);
             serveurFTP.close();
             socket.close();
         }catch (Exception e) {

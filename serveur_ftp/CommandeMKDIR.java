@@ -8,6 +8,11 @@ public class CommandeMKDIR extends Commande{
     }
 
     public void execute(CommandExecutor ce) {
+        if(commandeArgs.length!=1){
+            ps.println("2 Nombre d'arguments incorrect");
+            return;
+        }
+
         File newDossier = new File(ce.racinePath+ce.currentPath+"/"+commandeArgs[0]);
         //On vérifie que le dossier n'existe pas déjà et on vérifie que le chemin contient au moins la racine (que l'utilisateur ne cherche pas a remonter trop haut)
         if (!newDossier.exists() && (commandeArgs.length < 2) && newDossier.toPath().normalize().toString().replace("\\", "/").contains(ce.racinePath)) {

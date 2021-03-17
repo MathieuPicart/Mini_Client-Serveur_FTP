@@ -10,6 +10,11 @@ public class CommandeGET extends Commande {
 
 	public void execute(CommandExecutor ce) {
 
+		if(commandeArgs.length!=1){
+			ps.println("2 Nombre d'arguments incorrect");
+			return;
+		}
+
 		FileInputStream fis = null;
 		BufferedInputStream bis = null;
 		OutputStream os = null;

@@ -12,6 +12,11 @@ public class CommandeSTOR extends Commande {
 
 	public void execute(CommandExecutor ce) {
 
+		if(commandeArgs.length!=1){
+			ps.println("2 Nombre d'arguments incorrect");
+			return;
+		}
+
 		int bytesRead;
 		int current = 0;
 		FileOutputStream fos = null;

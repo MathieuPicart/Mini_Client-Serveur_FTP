@@ -16,7 +16,7 @@ public class CommandeCD extends Commande {
 				if (dossier.toPath().normalize().toString().replace("\\", "/").contains(ce.racinePath)) {
 					//Si oui on redéfini le currentPath
 					ce.currentPath = dossier.toPath().normalize().toString().replace("\\", "/").replace(ce.racinePath,"");
-					ps.println("0 Commande cd OK");
+					ps.println("0 Vous avez été déplacé");
 				} else {
 					ps.println("2 Vous n'avez pas acces au dossier");
 				}

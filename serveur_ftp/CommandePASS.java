@@ -9,6 +9,11 @@ public class CommandePASS extends Commande {
 	}
 
 	public void execute(CommandExecutor ce) {
+		if(commandeArgs.length!=1){
+			ps.println("2 Nombre d'arguments incorrect");
+			return;
+		}
+
 		try {
 			BufferedReader file = new BufferedReader(new FileReader("users/"+ce.login+"/pssd.txt"));
 			String pssd = file.readLine();
@@ -19,7 +24,6 @@ public class CommandePASS extends Commande {
 				ce.pwOk = true;
 				ce.currentPath = "";
 				ce.racinePath = "users/"+ce.login+"/racine";
-				ps.println("1 Commande pass OK");
 				ps.println("0 Vous êtes bien connecté sur notre serveur");
 			}
 			else {
