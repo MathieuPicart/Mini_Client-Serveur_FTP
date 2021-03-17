@@ -65,7 +65,7 @@ public class CommandeSTOR extends Commande {
 			bos.flush();
 			ps.println("0 Fichier uploadé");
 		}catch (Exception e){
-			ps.println("2 "+e);
+			ps.println("2 "+e.getMessage());
 		}finally {
 			try {
 				if (fos != null) fos.close();

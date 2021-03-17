@@ -30,7 +30,6 @@ public class CommandeGET extends Commande {
 
 			//En attente du client
 			sock = servsock.accept();
-			System.out.println("Accepted connection : " + sock);
 
 			// Vérification de l'éxistance du fichier
 			String filePath = ce.racinePath+ce.currentPath+"/"+commandeArgs[0];
@@ -50,7 +49,7 @@ public class CommandeGET extends Commande {
 			ps.println("0 Fichier téléchargé");
 
 		} catch (Exception e) {
-			ps.println("2 "+e);
+			ps.println("2 "+e.getMessage());
 		} finally {
 			try {
 				if (bis != null) bis.close();

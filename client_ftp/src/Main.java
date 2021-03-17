@@ -58,7 +58,7 @@ public class Main {
             (new File("downloads/"+fileName)).delete();
         } catch (IOException e) {
             (new File("downloads/"+fileName)).delete();
-            System.out.println("Une erreur est survenue : "+e);
+            System.out.println("Une erreur est survenue : "+e.getMessage());
         } finally {
             try {
                 if (fos != null) fos.close();
@@ -121,7 +121,7 @@ public class Main {
             os.flush();
             System.out.println(reader.readLine());
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         } finally {
             try {
                 if (bis != null) bis.close();
@@ -254,7 +254,7 @@ public class Main {
 
         //gestion des erreurs de connexion
         } catch (UnknownHostException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println("Euh Houston on a un problème le serveur n'est pas en ligne");
         }
